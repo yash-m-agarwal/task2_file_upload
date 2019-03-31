@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for datum in data %}
+        <div class="card">
+            <iframe src = "/ViewerJS/#../{{ datum.file_flagship.url }}" width='1100' height='300' allowfullscreen webkitallowfullscreen></iframe>
+            <div class="card-body">
+                <h5 class="card-title">{{ datum.title }}</h5>
+                <p class="card-text">{{ datum.description }}</p>
+                <a href="{% url 'file_view' datum.pk %}">View all files</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{ datum.uploaded_at }}</small>
+            </div>
+        </div>
+    {% endfor %}
+
+    <a href="{% url 'new_upload' %}">
+        <button type="button" class="btn btn-primary my-4">
+            <span class="glyphicon glyphicon-cloud-upload"></span> Upload Image
+        </button>
+    </a>
+
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

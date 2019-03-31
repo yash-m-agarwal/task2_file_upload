@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}File{% endblock %}
+
+{% block content %}
+    <div class="my-4">
+        <h1 class="text-center">{{ datum.title }}</h1>
+        <h4 class="text-center">{{ datum.description }}</h4>
+        <div class="justify-content-center">
+            {% for file in datum.files.all %}
+                <a href="{{ file.file.url }}">
+                    {{ file.file.url }}
+                </a>
+                <br>
+            {% endfor %}
+        </div>
+        <a href="{% url 'new_upload' %}">
+            <button type="button" class="btn btn-primary my-4 js-upload-photos">
+                <span class="glyphicon glyphicon-cloud-upload"></span> Upload Image
+            </button>
+        </a>
+    </div>
+{% endblock %}
