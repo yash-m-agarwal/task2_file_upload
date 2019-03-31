@@ -118,6 +118,8 @@ Using SHOW DATABASES Command your created database will appear in the list of da
   
 # Database Schema:
 
+**There exists a one-to-many relationship between the Data Table and the File Table**
+
 #### Data(Table)
 
 * Title

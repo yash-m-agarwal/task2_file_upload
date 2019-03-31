@@ -2,12 +2,15 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Data, File
+
 
 def home(request):
     data = Data.objects.all()
     return render(request, 'home.html', {'data': data})
+
 
 def file_view(request, pk):
     try:
@@ -17,6 +20,7 @@ def file_view(request, pk):
     return render(request, 'file_view.html', {'datum': datum})
 
 
+@csrf_exempt
 def new_upload(request):
 
     csrf_context = RequestContext(request)
@@ -28,10 +32,12 @@ def new_upload(request):
         description = request.POST.get('description')
         files = request.FILES.getlist('files[]')
 
+        print(files)
+
         datum = Data.objects.create(
              title=title,
              description=description,
-             file_flagship=files[0]
+             file_flagship=files[0],
         )
 
         for file in files:

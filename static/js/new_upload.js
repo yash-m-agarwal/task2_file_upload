@@ -1,4 +1,3 @@
-//function to get csrf_token bt cookie
 function getCookie(name)
 {
     let cookieValue = null;
@@ -27,7 +26,7 @@ function getCookie(name)
     $('#id_file').on('input', function () {
         let ins = document.getElementById('id_file').files.length;
         for (let x = 0; x < ins; x++) {
-            formData.append("files[]", document.getElementById('id_file').files[x]);
+            formData.append("files[]", document.getElementById('id_file').files[0]);
         }
         $("#gallery tbody").prepend(
           "<tr><td>" + document.getElementById('id_file').files[0].name + "</td></tr>"
@@ -44,8 +43,6 @@ function getCookie(name)
         formData.append('title',title);
         formData.append('description',description);
         formData.append('csrfmiddlewaretoken', csrftoken);
-
-        alert("Files Uploaded Successfully");
 
         $.ajax({
             type: 'post',
