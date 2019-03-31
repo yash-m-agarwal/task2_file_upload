@@ -45,6 +45,8 @@ function getCookie(name)
         formData.append('description',description);
         formData.append('csrfmiddlewaretoken', csrftoken);
 
+        alert("Files Uploaded Successfully");
+
         $.ajax({
             type: 'post',
             url: '/file/new/',

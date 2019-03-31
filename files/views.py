@@ -16,7 +16,7 @@ def file_view(request, pk):
         raise Http404
     return render(request, 'file_view.html', {'datum': datum})
 
-@csrf_protect
+
 def new_upload(request):
 
     csrf_context = RequestContext(request)

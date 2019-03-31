@@ -14,9 +14,17 @@
                 <br>
             {% endfor %}
         </div>
+
+        <h6 style="margin-top: 12px;">Click on the above links to display the corresponding pdf</h6>
         <a href="{% url 'new_upload' %}">
-            <button type="button" class="btn btn-primary my-4 js-upload-photos">
-                <span class="glyphicon glyphicon-cloud-upload"></span> Upload Image
+            <button type="button" class="btn btn-primary my-4">
+                Add a new File
+            </button>
+        </a>
+
+        <a href="{% url 'home' %}">
+            <button type="button" class="btn btn-success my-4">
+                All Files
             </button>
         </a>
     </div>

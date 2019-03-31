@@ -23,9 +23,11 @@ from files import views
 urlpatterns = [
     url(r'^files/$', views.home, name='home'),
     url(r'^file/(?P<pk>\d+)/$', views.file_view, name='file_view'),
-    url(r'file/new/$', views.new_upload, name='new_upload'),
+    url(r'^file/new/$', views.new_upload, name='new_upload'),
     url(r'^admin/', admin.site.urls),
+
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.VIEWER_URL, document_root=settings.MEDIA_ROOT)
